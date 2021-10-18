@@ -40,13 +40,26 @@
 
 </div>
 
-<div class="px-12 py-20 flex flex-wrap gap-4">
-    <p class="font-sans text-sm mx-auto max-w-xl leading-loose mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+<div class="px-12 py-20 flex flex-wrap gap-4 w-4/5 mx-auto">
+    <p class="font-sans text-sm ml-3 max-w-xs leading-loose mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
     @foreach($images as $k => $image)
         {{--        {{ dd($image) }}--}}
 {{--        <img class="w-auto h-72 flex-grow object-cover" src="/storage/{{ $image->image }}" />--}}
-        <img class="w-72 h-auto flex-grow object-cover" src="/storage/{{ $image->image }}" />
+{{--        <a class="" href="/storage/{{ $image->image }}" >--}}
+            <img class="myLinkModal w-auto h-72 flex-grow object-cover" src="/storage/{{ $image->image }}" />
+{{--        </a>--}}
+
+
     @endforeach
 </div>
+<div id="myModal" class="w-5/6 h-5/6">
+{{--    <p>контент</p>--}}
+    <img class="" src="" />
+    <button class="next bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
+        Next
+    </button>
+    <span id="myModal__close" class="close">ₓ</span>
+</div>
+<div id="myOverlay"></div>
 
 @endsection
