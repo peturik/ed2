@@ -20,45 +20,90 @@ tinymce.init({
 
 
 
-// $(document).ready(function() {
+// ---- gallery ------ //
 let srcImg;
+let nextImg;
+let prevImg;
 let myLinkModal = $('.myLinkModal');
+let myModalImg = $('#myModal img');
 
-function openWindow(src) {
-    $('#myOverlay').fadeIn(297,	function(){
-        $('#myModal img').attr('src', src);
-        $('#myModal').css('display', 'block').animate({opacity: 1}, 198);
+let firstImg = $('.gallery img').attr('src');
+let lastImg = $('.gallery img').last().attr('src');
+console.log(firstImg)
+console.log(lastImg)
 
-    });
-}
 
 $(document).keydown(function (e){
     if (e.keyCode === 39){
-        let src = $('.myLinkModal').next().attr('src');
-        console.log(srcImage);
+        next();
+    }
+    if (e.keyCode === 37) {
+        prev();
+    }
+    if (e.keyCode === 27) {
+        escape();
     }
 })
+
+
 
 myLinkModal.click( function(event){
     event.preventDefault();
     // let imgSrc = $(event.target).attr('src');//event.target равно this
     srcImg = $(this).attr('src');
     console.log(srcImg);
-    openWindow(srcImg);
+    $('#myOverlay').fadeIn(297,	function(){
+        myModalImg.attr('src', srcImg);
+        $('#myModal').css('display', 'block').animate({opacity: 1}, 198);
+    });
 });
 
-$('.next').click(function (){
-    console.log($('#myModal img').next().attr('src'));
-})
+function next() {
+    myLinkModal.each(function() {
+        let iter = $(this).attr('src');
+        if(srcImg === iter){
+            srcImg = $(this).next().attr('src');
+            console.log(srcImg);
+            myModalImg.attr('src', srcImg);
+            if (srcImg === undefined){
+                srcImg = firstImg;
+                myModalImg.attr('src', srcImg);
+                return false;
+            }
+            return false;
+        }
+    })
+}
 
+function prev() {
+    myLinkModal.each(function() {
+        let iter = $(this).attr('src');
+        if(srcImg === iter){
+            srcImg = $(this).prev().attr('src');
+            console.log(srcImg);
+            myModalImg.attr('src', srcImg);
+            if (srcImg === undefined){
+                srcImg = lastImg;
+                myModalImg.attr('src', srcImg);
+                return false;
+            }
+            return false;
+        }
+    })
+}
 
+$('#myModal__close, #myOverlay').click(escape);
 
-
-    $('#myModal__close, #myOverlay').click( function(){
-        $('#myModal').animate({opacity: 0}, 198, function(){
-            $(this).css('display', 'none');
-            $('#myOverlay').fadeOut(297);
-        });
+function escape(){
+    $('#myModal').animate({opacity: 0}, 198, function(){
+        $(this).css('display', 'none');
+        $('#myOverlay').fadeOut(297);
+        nextImg = undefined;
+        prevImg = undefined;
     });
-// });
+}
+
+ $('.next').click(next);
+ $('.prev').click(prev);
+// ---- end gallery ------ //
 
