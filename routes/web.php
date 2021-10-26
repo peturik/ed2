@@ -38,4 +38,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+// категория блога (посты категории)
+Route::get('category/{category:slug}', 'BlogController@category')
+    ->name('category');
+// тег блога (посты с этим тегом)
+Route::get('tag/{tag:slug}', 'BlogController@tag')
+    ->name('tag');
+
 require __DIR__.'/auth.php';
