@@ -26,12 +26,9 @@ let nextImg;
 let prevImg;
 let myLinkModal = $('.myLinkModal');
 let myModalImg = $('#myModal img');
-
-let firstImg = $('.gallery img').attr('src');
-let lastImg = $('.gallery img').last().attr('src');
-console.log(firstImg)
-console.log(lastImg)
-
+let galleryImg = $('.gallery img');
+let firstImg = galleryImg.attr('src');
+let lastImg = galleryImg.last().attr('src');
 
 $(document).keydown(function (e){
     if (e.keyCode === 39){
@@ -51,7 +48,6 @@ myLinkModal.click( function(event){
     event.preventDefault();
     // let imgSrc = $(event.target).attr('src');//event.target равно this
     srcImg = $(this).attr('src');
-    console.log(srcImg);
     $('#myOverlay').fadeIn(297,	function(){
         myModalImg.attr('src', srcImg);
         $('#myModal').css('display', 'block').animate({opacity: 1}, 198);
@@ -63,7 +59,6 @@ function next() {
         let iter = $(this).attr('src');
         if(srcImg === iter){
             srcImg = $(this).next().attr('src');
-            console.log(srcImg);
             myModalImg.attr('src', srcImg);
             if (srcImg === undefined){
                 srcImg = firstImg;
@@ -80,7 +75,6 @@ function prev() {
         let iter = $(this).attr('src');
         if(srcImg === iter){
             srcImg = $(this).prev().attr('src');
-            console.log(srcImg);
             myModalImg.attr('src', srcImg);
             if (srcImg === undefined){
                 srcImg = lastImg;
@@ -92,7 +86,7 @@ function prev() {
     })
 }
 
-$('#myModal__close, #myOverlay').click(escape);
+$('#myModal__close, #myOverlay, #myModal').click(escape);
 
 function escape(){
     $('#myModal').animate({opacity: 0}, 198, function(){

@@ -52,17 +52,18 @@
 
     @endforeach
 </div>
-<div id="myModal" class="w-5/6 h-5/6">
+<div id="myModal" class="">
 {{--    <p>контент</p>--}}
-    <img class="" src="" />
-    <button class="prev bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
+    <img class="modal-content" src="" />
+    <button class="prev bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-12">
         Prev
     </button>
-    <button class="next bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
+    <button class="next bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-12 rounded-r">
         Next
     </button>
 
-    <span id="myModal__close" class="close">ₓ</span>
+    <span id="myModal__close" class="close">×</span>
+
 </div>
 <div id="myOverlay"></div>
 
