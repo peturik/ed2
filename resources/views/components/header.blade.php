@@ -39,16 +39,16 @@
 
     <ul class="order-last md:order-first flex-1 flex justify-center md:justify-start list-reset mainmenu">
         <li>
-            <a href="/" class="text-sm text-grey-darker no-underline hover:text-black">Home</a>
+            <a href="/" class="text-lg text-grey-darker no-underline hover:text-black">Home</a>
         </li>
         <li class="ml-8">
-            <a href="/blog" class="text-sm text-grey-darker no-underline hover:text-black">Blog</a>
+            <a href="/blog" class="text-lg text-grey-darker no-underline hover:text-black">Blog</a>
         </li>
         <li class="ml-8">
-            <a href="/about" class="text-sm text-grey-darker no-underline hover:text-black">About</a>
+            <a href="/about" class="text-lg text-grey-darker no-underline hover:text-black">About</a>
         </li>
         <li class="ml-8">
-            <a href="/post/create" class="text-sm text-grey-darker no-underline hover:text-black">Create Post</a>
+            <a href="/post/create" class="text-lg text-grey-darker no-underline hover:text-black">Create Post</a>
         </li>
     </ul>
 
