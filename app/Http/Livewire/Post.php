@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Gallery;
 use Livewire\Component;
 use App\Models\Post as BlogPost;
 
@@ -16,7 +17,8 @@ class Post extends Component
 
     public function render()
     {
-        return view('livewire.post')
+        $images = Gallery::query()->where('post_id', $this->post->id)->get();
+        return view('livewire.post', compact('images'))
             ->extends('layouts.main')
             ->section('content');
     }

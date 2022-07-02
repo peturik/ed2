@@ -1,6 +1,9 @@
 <div>
     <input wire:model="search" class="form-control" type="text" placeholder="Search Posts...">
 
+
+<div id="search-modal">
+
     @if(!$search == '')
         <ul>
             @foreach($searchPosts as $searchPost)
@@ -13,6 +16,9 @@
             @endforeach
         </ul>
     @endif
+
+
+</div>
 
 
 </div>

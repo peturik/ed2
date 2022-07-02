@@ -1,10 +1,12 @@
 $('.mainmenu li').click(function (){
+
     $(this).addClass('active').siblings().removeClass('active');
 })
 //silings() выбирает смежные элементы после чего removeClass() удаляет класс
 
 $(document).ready(function(){
-    // alert(window.location.pathname);  //получить uri
+
+     //alert(window.location.pathname);  //получить uri
     $(".mainmenu li a").each(function(){   // метод each() - циклический перебор элементов
         if($(this).attr("href") === window.location.pathname)
             $(this).addClass("active");
@@ -14,9 +16,12 @@ $(document).ready(function(){
 
 })
 
-tinymce.init({
-    selector: '#editor'
-});
+
+
+//tinymce.init({
+//    selector: '#editor'
+//});
+
 
 
 
@@ -29,19 +34,6 @@ let myModalImg = $('#myModal img');
 let galleryImg = $('.gallery img');
 let firstImg = galleryImg.attr('src');
 let lastImg = galleryImg.last().attr('src');
-
-$(document).keydown(function (e){
-    if (e.keyCode === 39){
-        next();
-    }
-    if (e.keyCode === 37) {
-        prev();
-    }
-    if (e.keyCode === 27) {
-        escape();
-    }
-})
-
 
 
 myLinkModal.click( function(event){
@@ -86,7 +78,7 @@ function prev() {
     })
 }
 
-$('#myModal__close, #myOverlay, #myModal').click(escape);
+$('#myModal__close, #myOverlay').click(escape);
 
 function escape(){
     $('#myModal').animate({opacity: 0}, 198, function(){
@@ -99,5 +91,17 @@ function escape(){
 
  $('.next').click(next);
  $('.prev').click(prev);
+
+$(document).keydown(function (e){
+    if (e.keyCode === 39){
+        next();
+    }
+    if (e.keyCode === 37) {
+        prev();
+    }
+    if (e.keyCode === 27) {
+        escape();
+    }
+})
 // ---- end gallery ------ //
 

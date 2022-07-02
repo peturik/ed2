@@ -1,2 +1,8 @@
-RewriteEngine On
-RewriteRule ^(.*)$ public/$1 [L]
+<IfModule mod_rewrite.c> 
+    RewriteEngine on 
+    RewriteCond %{REQUEST_URI} !^public 
+    RewriteRule ^(.*)$ public/$1 [L] 
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+</IfModule>
+
